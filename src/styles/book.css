@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:wght@400;600&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ✨ Magical Dark Background (Hogwarts style, no dots now) */
+/* --- Magical Background --- */
 body {
   background: radial-gradient(ellipse at bottom, #0a0a0f 0%, #000 100%);
   color: #f9f6e8;
@@ -14,9 +10,7 @@ body {
   position: relative;
 }
 
-/* Removed floating dust (sparkle squares) */
-
-/* Floating candles like Hogwarts Great Hall */
+/* --- Magical Floating Candles (Hogwarts feel) --- */
 @keyframes flicker {
   0%, 100% { opacity: 0.9; transform: translateY(0px); }
   50% { opacity: 1; transform: translateY(-10px); }
@@ -47,7 +41,7 @@ body {
 }
 
 /* ========================== */
-/* 🪄 Magical Book Appearance */
+/* 📖 BOOK DESIGN */
 /* ========================== */
 
 .book {
@@ -59,7 +53,9 @@ body {
   border-radius: 16px;
   overflow: hidden;
   background: radial-gradient(circle at top left, #f8f3da, #ede2b8);
-  box-shadow: 0 0 70px rgba(255, 215, 100, 0.4), inset 0 0 40px rgba(180, 130, 50, 0.3);
+  box-shadow:
+    0 0 70px rgba(255, 215, 100, 0.4),
+    inset 0 0 40px rgba(180, 130, 50, 0.3);
   transition: transform 0.6s ease;
 }
 
@@ -67,7 +63,7 @@ body {
   transform: translateY(-10px) rotateY(1deg);
 }
 
-/* Each Page */
+/* --- Page Animation --- */
 .page {
   position: absolute;
   width: 100%;
@@ -92,10 +88,10 @@ body {
   overflow: hidden;
 }
 
-/* Front and Back Surfaces */
+/* --- Front & Back of Each Page --- */
 .page-front {
   background: radial-gradient(circle at 20% 20%, #fffbea, #f4e3b0);
-  padding: 2.5rem 3rem; /* Wider margin */
+  padding: 2.5rem 3rem; /* 🔥 Margin inside */
   color: #2c1c0d;
   box-sizing: border-box;
 }
@@ -107,27 +103,27 @@ body {
   box-sizing: border-box;
 }
 
-/* Inner Content with auto alignment and safety padding */
+/* --- Inner Content Styling (auto alignment + safety spacing) --- */
 .page-inner {
   font-family: "Crimson Pro", serif;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #33220f;
   height: 100%;
   width: 100%;
-  padding: 0.5rem 0; /* additional spacing inside page */
-  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 0.5rem 0;
   text-align: justify;
   text-shadow: 0 1px 0 #fdf6e3;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.75rem;
-  overflow-y: auto;
+  gap: 1rem;
   scrollbar-width: thin;
   scrollbar-color: #c6a45b #f8f1db;
+  box-sizing: border-box;
 }
 
-/* Scrollbar (subtle golden style) */
+/* --- Subtle Scrollbar --- */
 .page-inner::-webkit-scrollbar {
   width: 8px;
 }
@@ -139,7 +135,7 @@ body {
   background: #f8f1db;
 }
 
-/* Title and Subtext formatting */
+/* --- Typography inside book --- */
 .page h2 {
   font-family: "Cinzel", serif;
   font-size: 28px;
@@ -161,11 +157,24 @@ body {
 .page p,
 .page li {
   font-size: 15.5px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: #2b1b0c;
 }
 
-/* Golden glowing outline */
+/* --- Realistic curve near the spine --- */
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background: radial-gradient(circle at left, rgba(0, 0, 0, 0.1), transparent 70%);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* --- Magical Golden Glow --- */
 .book::before {
   content: "";
   position: absolute;
@@ -175,6 +184,92 @@ body {
   box-shadow: 0 0 35px rgba(255, 220, 100, 0.3);
   pointer-events: none;
   animation: glowPulse 4s ease-in-out infinite;
+}
+/* --- Storybook enhancements --- */
+.storybook-title {
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+  color: #4b2a07;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(to right, #e6cf90, #f9efb3, #e6cf90);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 215, 120, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.storybook-heading {
+  font-size: 2.5rem;
+  color: #3a1c05;
+  background: linear-gradient(90deg, #f1d18a, #fff0c3, #f1d18a);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 20px rgba(255, 220, 130, 0.3);
+  margin-bottom: 1rem;
+}
+
+.storybook-link {
+  color: #a16207;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.storybook-link:hover {
+  color: #c37f08;
+  text-shadow: 0 0 10px rgba(255, 230, 150, 0.6);
+}
+
+.storybook-section {
+  background: rgba(255, 249, 230, 0.8);
+  border-left: 4px solid #d6a43a;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  box-shadow: inset 0 0 10px rgba(180, 120, 40, 0.2);
+}
+
+.storybook-subtitle {
+  font-family: "Cinzel", serif;
+  color: #633b09;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.storybook-text {
+  text-align: justify;
+  line-height: 1.8;
+  font-size: 15.5px;
+  color: #2d1b07;
+}
+
+.storybook-list {
+  margin-left: 1.2rem;
+  color: #3a2207;
+  list-style-type: disc;
+}
+
+.storybook-skill {
+  background: linear-gradient(to right, #f9e7b3, #e9d084);
+  border: 1px solid #d6a43a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #4b2a07;
+  box-shadow: 0 0 8px rgba(255, 220, 130, 0.3);
+}
+
+.storybook-btn {
+  p: 3px;
+  border-radius: 50%;
+  background: rgba(255, 230, 150, 0.6);
+  box-shadow: 0 0 10px rgba(255, 220, 100, 0.4);
+  padding: 0.8rem;
+  transition: 0.3s;
+}
+.storybook-btn:hover {
+  background: rgba(255, 240, 170, 0.9);
+  transform: scale(1.05);
 }
 
 @keyframes glowPulse {

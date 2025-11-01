@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FlipBook from "./components/FlipBook";
+import "./index.css";
+import "./styles/book.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Hello docker </h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 🕯️ Floating candles */}
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="candle"
+          style={{
+            top: `${Math.random() * 80 + 5}%`,
+            left: `${Math.random() * 90 + 5}%`,
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        />
+      ))}
+
+      {/* ✨ Magical golden aura */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,215,100,0.15),transparent_70%)] pointer-events-none" />
+
+      <FlipBook />
+    </div>
+  );
 }
 
-export default App
+export default App;
